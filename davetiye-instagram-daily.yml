@@ -1,0 +1,54 @@
+name: Davetiye Instagram - Gunluk Reels taslagi
+
+on:
+  workflow_dispatch:
+    inputs:
+      day:
+        description: 'YYYY-MM-DD, bos ise Turkiye bugun'
+        type: string
+        required: false
+        default: ''
+  schedule:
+    - cron: '30 6 * * *' # 09:30 Europe/Istanbul
+
+permissions:
+  contents: read
+
+concurrency:
+  group: davetiye-instagram-studio
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      R2_ASSETS_BUCKET: piyaso-tiktok-assets
+      R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      TARGET_DAY: ${{ inputs.day || '' }}
+      INSTAGRAM_PUBLISH_ENABLED: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gerekli kutuphaneler
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install -r requirements-davetiye.txt
+      - name: 49 baslik + 3 aciklama + 14 sarkiyi R2 planina ekle (tekrar eklemez)
+        run: python davetiye_instagram.py seed
+      - name: Gunluk tek Reels taslagi hazirla (otomatik paylasim yok)
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$TARGET_DAY" ]]; then TARGET_DAY="$(TZ=Europe/Istanbul date +%F)"; fi
+          python davetiye_instagram.py run --date "$TARGET_DAY" --skip-if-empty
+      - name: Instagram otomatik paylasimi kapali tut
+        if: always()
+        run: |
+          test "$INSTAGRAM_PUBLISH_ENABLED" = 'false'
+          echo 'R2 taslak hazirlanir, Instagram/Buffer yayini YAPILMAZ.'

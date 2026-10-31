@@ -1,0 +1,26 @@
+{
+  "package": "Davetiye Instagram iPad 17 gorunur dosya",
+  "headlines": 49,
+  "captions": 3,
+  "songs": 14,
+  "automated_instagram_publishing": false,
+  "files": {
+    "README_GITHUB_KURULUM.md": "f47d010fbfccb34d0db20bd9c4f02e4f17be47399d3e910cc4a4c922c0afa312",
+    "aciklamalar_3.json": "a8920488caa55ff559a58da77cbf53dd376b35db667c65689d83273f83f03b8a",
+    "aciklamalar_3_TEK_SATIR.txt": "533a6c863eadeee75b0971e13fd29ede305a252affdead33f8808850faab58ef",
+    "basliklar_49.json": "b1f02458c850f54a693e9eb7a8a96030f098174da890d0801c07949c4927fd85",
+    "basliklar_49_TEK_SATIR.txt": "c4da8be7c4b6c374fe847339fd8560c260b69454313f466791986320af776608",
+    "davetiye-instagram-daily.yml": "16ed81b94a9df644de61aff6804d52dffdef4013034bd421f10560167127f373",
+    "davetiye-instagram-library.yml": "4e552b21c5b2c45d311bf3d49053ef648916df8e3b3eda18727cc20f56ce7138",
+    "davetiye-instagram-r2-setup.yml": "8f08e07a1d26923f65428d6d4d8496d91d02b6e620378158f70988d3e794d531",
+    "davetiye_instagram.py": "87e1c2a2ddb368fc3d98ccd0270eecec89789f5f6ea645d31e8ada7a20391683",
+    "davetiye_library.py": "497bb4459ab6a75691cc0da69acccf9c0d1c9b4bfad458d3dd73703ac177760c",
+    "donusum_plani_49.json": "de4c2f32b7bd72e1ad375d053a2d87257a5b3fbb7b624fd75bf3dbf9439f16e6",
+    "requirements-davetiye.txt": "47a681008e339356480bc970fb6fa1cfe3771404836ad2e8c1f0433ea706e169",
+    "sarkilar_14.json": "16f1d0a8880cda5cb1a6d3b58ee1b02a96e211879412aeea1468251fdea3c812",
+    "sarkilar_14_TEK_SATIR.txt": "09c8a61f72e8b4b67028d52479d05f9a12c4d151b59301cb43965f65386d8fd3",
+    "test_davetiye_instagram.py": "575568507515bfa0f806adbb99e414939ef0f5fbe11b13d3a81ee574bac3cde7",
+    "test_davetiye_library.py": "719569ce79e1dd1d20e185e50ed52f62cc5e24cdc221fdbc93adafaad8f9993e"
+  },
+  "layout": "flat_for_ios; rename three workflow files via GitHub web editor to .github/workflows"
+}
